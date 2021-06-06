@@ -2,7 +2,7 @@
 
 ### :peach: Go CLI
 - `go build` = compile go code file eg: `go build main.go` will produce main.exe, to execute Mac: ./main Win: click on main.exe
-- `go run` = compile andexecute 1-2 files eg: go run main.go
+- `go run` = compile andexecute 1-2 files eg: go run main.go state.go
 - `go fmt` = format all the code in each file in the current dir
 - `go install` = compile and install a package
 - `go get` = download the raw source code of package
@@ -49,6 +49,22 @@
               deckSize = 50
               fmt.Println(deckSize)
             }   
+
+####  Functions
+- function from the same package in different file can be used without need of importing
+        package main
+
+        func main() {
+            printState()
+        }
+        ---
+        package main
+
+        import "fmt"
+
+        func printState() {
+            fmt.Println("California")
+        }
 
 ### :sunflower: Useful Links
 - https://play.golang.org/ (Go online playground)
