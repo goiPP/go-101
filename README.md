@@ -15,4 +15,4 @@
 2. Reusable (package xxx) = code used as 'helpers where we put reusable logic
 
 ####  Import statement
-- to import other package to be used in this package. ['fmt'](https://golang.org/pkg/fmt/) is a stand package of go.
+- to import other package to be used in this package. ['fmt'](https://golang.org/pkg/fmt/) is a standard package of go.
