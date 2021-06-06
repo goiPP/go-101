@@ -1,5 +1,10 @@
 # Baisc Go
 
+> Static typing: types are known and checked by a compiler for correctness before running your program eg: C++, Java, Go
+
+> Dynamic typing: types are only known as your program is running eg: Ruby, Python, Javascript
+> var num = 123 (number) then num = "123" (string) is allowed
+
 ### :peach: Go CLI
 - `go build` = compile go code file eg: `go build main.go` will produce main.exe, to execute Mac: ./main Win: click on main.exe
 - `go run` = compile andexecute 1-2 files eg: go run main.go
@@ -15,4 +20,44 @@
 2. Reusable (package xxx) = code used as 'helpers where we put reusable logic
 
 ####  Import statement
-- to import other package to be used in this package. ['fmt'](https://golang.org/pkg/fmt/) is a standard package of go.
+- to import other package to be used in this package. ['fmt'](https://golang.org/pkg/fmt/) is a stand package of go.
+
+####  Go is static typing language
+- fundamental Go Types: bool, string, int, float64
+> Static typing: types are known and checked by a compiler for correctness before running your program eg: C++, Java, Go. 
+> So for Go `var card string = "hi"` is not neccessary. We can do `card:= "hi"`
+
+> Dynamic typing: types are only known as your program is running eg: Ruby, Python, Javascript: var num = 123 (number) then num = "123" (string) is allowed
+
+####  Decalring variable
+- Go is static typing language
+> Static typing: types are known and checked by a compiler for correctness before running your program eg: C++, Java, Go. 
+> So for Go `var card string = "hi"` is not neccessary. We can do `card:= "hi"`
+
+> Dynamic typing: types are only known as your program is running eg: Ruby, Python, Javascript: var num = 123 (number) then num = "123" (string) is allowed
+- fundamental Go Types: bool, string, int, float64
+- Declaring ways:
+    - :heavy_check_mark: Specify type (can do but not neccessary) `var card string = "Ace of Spades" `
+    - :heavy_check_mark: First time initializing `value card := "Ace of Spades"`
+    - :heavy_check_mark:  Reassigning `value card = "Five of Diamonds"`
+    - :heavy_check_mark: Declare first then assign
+        >     func main() {
+        >           var card int
+        >           card = 52
+        >           fmt.Println(card)
+        >     }
+    -  Declare value outside of func body
+           :x:
+           
+            card := "Ace of Spade"
+            func main() {...}
+          :heavy_check_mark:
+
+            var deckSize int
+            func main() {
+              deckSize = 50
+              fmt.Println(deckSize)
+            }   
+
+### :sunflower: Useful Links
+- https://play.golang.org/ (Go online playground)
