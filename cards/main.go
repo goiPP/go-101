@@ -3,9 +3,11 @@ package main
 import "fmt"
 
 func main() {
-	card := newCard()
-	fmt.Println(card)
-	printState()
+	cards := []string{"a card", newCard()}
+	cards = append(cards, "another card") // return a new slice (not modify existing ones)
+	for i, card := range cards {
+		fmt.Println(i, card)
+	}
 }
 
 func newCard() string {
