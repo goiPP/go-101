@@ -85,6 +85,28 @@
             for i, card := range d {
                 fmt.Println(i, card)
         }
+#### Testing with Go
+- Go does not have a test framework such as mocha, jasmine, selenium
+- A test can be done with command `go test` that will run test on files (under main package) with suffix``"_test.go"`` .
+- Errors that could be found when run `go test`
+    - :bookmark_tabs: go: cannot find main module
+    
+                go: cannot find main module, but found .g\Workspace\Go\go-101    le there, run:
+                    to create a module there, run:
+                    cd .. && go mod init
+                    
+                    
+        :bulb: The problem is due to the go default path. Run below command to will create `go.mod` file in cuurent directory
 
+                `cd ~\Workspace\Go\go-101\cards`
+                `go mod init cards`
+    - :bookmark_tabs: Errorf call has arguments but no formatting directives         
+        :bulb: wrong syntax, we can use 1 of these syntax
+
+                t.Errorf("Expected deck of length 16, but got %v", len(d))
+
+                or
+
+                t.Error("Expected deck of length 16, but got ", len(d))
 ### :sunflower: Useful Links
 - https://play.golang.org/ (Go online playground)
