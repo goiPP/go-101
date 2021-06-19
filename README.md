@@ -156,17 +156,23 @@ Go is not a OO language, it is static typing, pass by value
     - use pointers to change value in the function
 - Reference Type = slice, map, channel, pointer, function
     - no need point, Go will still create a copy, but point to the same underlying data structure. see below example
+
 :low_brightness: Pointer with Slice/ Reference type
 - aSlice[index] = will actually modify the value at index of aSlice object
 - how?
     - when we create a Slice we will get both Slice and Arrays (as a underlying of Slice in Go)
+
     aSlice:point_right:@0001 : "a", "b", "c" (:point_down:)
+
     aArray:point_right:@0002: []string{"a","b","c"}
+
     - when calling a function(aSlice) => Go will a copy of aSlice, but point to the same array of the original Slice
+
     aSlice:point_right:@0001 : "a", "b", "c" (:point_down:)
+
     aArray:point_right:@0002: []string{"a","b","c"}
+
     aSliceCopied:point_right:@0003: []string{"a","b","c"} (:point_up:)
-sss
 
 ### :sunflower: Useful Links
 - https://play.golang.org/ (Go online playground)
