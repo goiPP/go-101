@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"strings"
+)
 
 type deck []string
 
@@ -25,4 +29,12 @@ func (d deck) print() {
 func deal(d deck, handSize int) (deck, deck) {
 	// range(inclusiveIndex, exclusiveIndex), will return 2 new reference without modify existing one
 	return d[:handSize], d[handSize:]
+}
+
+func (d deck) toString() string {
+	return strings.Join([]string(d), ",")
+}
+
+func (d deck) saveToFile(fileName string) error {
+	return ioutil.WriteFile(fileName, []byte(d.toString()), 0666) // 0666 default permission: anyone can read and write this file
 }
