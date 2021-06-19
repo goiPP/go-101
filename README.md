@@ -1,5 +1,5 @@
 # Basic Go
-
+Go is not a OO language, it is static typing, pass by value
 ### :peach: Go CLI
 - `go build` = compile go code file eg: `go build main.go` will produce main.exe, to execute Mac: ./main Win: click on main.exe
 - `go run` = compile andexecute 1-2 files eg: go run main.go state.go
@@ -25,7 +25,7 @@
 > Dynamic typing: types are only known as your program is running eg: Ruby, Python, Javascript: var num = 123 (number) then num = "123" (string) is allowed
 
 ####  Decalring variable
-- fundamental Go Types: bool, string, int, float64
+- fundamental Go Types: bool, string, int, float64, Arrays (primative, cannot resize)
 - Declaring ways:
     - :heavy_check_mark: Specify type (can do but not neccessary) `var card string = "Ace of Spades" `
     - :heavy_check_mark: First time initializing `value card := "Ace of Spades"`
@@ -38,8 +38,7 @@
                    fmt.Println(card)
              }
     -  Declare value outside of func body
-
-           :x:
+          :x:
            
             card := "Ace of Spade"
             func main() {...}
@@ -108,5 +107,66 @@
                 or
 
                 t.Error("Expected deck of length 16, but got ", len(d))
+
+#### Pointer
+        
+        type person struct {
+            firstName string
+            lastName  string
+        }
+        aPerson = person{"first", "last"}
+        aPersonPointer := &aPerson
+        
+- **`&variable`** (&aPerson) =  is an operator that give the memory address of the value that aPerson is pointing at = aPersonPointer (001f)
+- **`*pointer`** (*aPersonPointer) = is an operator that give the value this memory address is pointing at = value at address 001f => person{"first", "last"}
+
+        address point to 0001, value point to person{..}
+        turn address into value   with *address
+        turn value   into address with &value
+    - `*type` = this is not an operator but just a type, pointer of a type eg: `(pointerToPerson *person)`
+
+            package main
+
+            import "fmt"
+
+            func main() {
+             name := "bill"
+
+             namePointer := &name
+
+             fmt.Println(&namePointer) =>0x0001
+             printPointer(namePointer) =>0x0002
+            }
+
+            func printPointer(namePointer *string) {
+             fmt.Println(&namePointer)
+            }
+    - &namePointer is the address of namePointer. while namePointer is the address of name
+
+:low_brightness: Pointer shortcut
+- With the Receiver define type as pointer, we can use function with that recevier with an object. It will auto retrieve the pointer of that object
+
+        aPerson.update("new") === (&aPerson).update("new")  
+        
+        func (pointerToPerson *person) update(newName string) {
+        (*pointerToPerson).name = newName 
+        }
+:low_brightness: Value Type and Reference Type
+- Value Type = int, float, string, bool, structs
+    - use pointers to change value in the function
+- Reference Type = slice, map, channel, pointer, function
+    - no need point, Go will still create a copy, but point to the same underlying data structure. see below example
+:low_brightness: Pointer with Slice/ Reference type
+- aSlice[index] = will actually modify the value at index of aSlice object
+- how?
+    - when we create a Slice we will get both Slice and Arrays (as a underlying of Slice in Go)
+    aSlice:point_right:@0001 : "a", "b", "c" (:point_down:)
+    aArray:point_right:@0002: []string{"a","b","c"}
+    - when calling a function(aSlice) => Go will a copy of aSlice, but point to the same array of the original Slice
+    aSlice:point_right:@0001 : "a", "b", "c" (:point_down:)
+    aArray:point_right:@0002: []string{"a","b","c"}
+    aSliceCopied:point_right:@0003: []string{"a","b","c"} (:point_up:)
+sss
+
 ### :sunflower: Useful Links
 - https://play.golang.org/ (Go online playground)
