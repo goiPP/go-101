@@ -174,5 +174,16 @@ Go is not a OO language, it is static typing, pass by value
 
         aSliceCopied:point_right:@0003: []string{"a","b","c"} (:point_up:)
 
+#### Map Vs Struct
+- Map
+    - all keys/values must be same type
+    - keys are indexed, we can iterate over them. map[key]
+    - don't need to know all the keyes at compile time
+    - Reference type
+- Struct
+    - Values can be differnet type
+    - Keys don't support indexing
+    - need to know all the fields at compile time
+    - Value Type
 ### :sunflower: Useful Links
 - https://play.golang.org/ (Go online playground)
