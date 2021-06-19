@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -37,4 +38,15 @@ func (d deck) toString() string {
 
 func (d deck) saveToFile(fileName string) error {
 	return ioutil.WriteFile(fileName, []byte(d.toString()), 0666) // 0666 default permission: anyone can read and write this file
+}
+
+func newDeckFromFile(fileName string) deck {
+	byteSlice, err := ioutil.ReadFile(fileName)
+	if err != nil {
+		fmt.Println("File does not exist with error:", err)
+		os.Exit(1)
+	}
+
+	stringSlice := strings.Split(string(byteSlice), ",")
+	return deck(stringSlice)
 }
