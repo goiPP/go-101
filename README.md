@@ -1,4 +1,4 @@
-# Baisc Go
+# Basic Go
 
 ### :peach: Go CLI
 - `go build` = compile go code file eg: `go build main.go` will produce main.exe, to execute Mac: ./main Win: click on main.exe
@@ -38,6 +38,7 @@
                    fmt.Println(card)
              }
     -  Declare value outside of func body
+
            :x:
            
             card := "Ace of Spade"
