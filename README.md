@@ -50,13 +50,20 @@
               fmt.Println(deckSize)
             }   
 
-####  Functions
-- function from the same package in different file can be used without need of importing
+####  Functions and Recievers
+- Go is not a OO language
+- Functions: function from the same package in different file can be used without need of importing
+- Receivers: equivalent to "this" in java, go is avoiding this and self usage byb introduce this receiver.
+
         package main
 
         func main() {
             printState()
+            cards := deck{"a card", newCard()}
+            cards = append(cards, "another card") // return a new slice (not modify existing ones)
+            cards.print() // usage of reciever
         }
+        
         ---
         package main
 
@@ -64,6 +71,18 @@
 
         func printState() {
             fmt.Println("California")
+        }
+        
+        ---
+        package main
+
+        import "fmt"
+        
+        type deck []string
+
+        func (d deck) print() {           // (d deck) is a Reciever
+            for i, card := range d {
+                fmt.Println(i, card)
         }
 
 ### :sunflower: Useful Links
