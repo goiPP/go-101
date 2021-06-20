@@ -250,5 +250,16 @@ Go is not a OO language, it is static typing, pass by value
     - Interface type = we cannot create a value out of it directly eg: bot
         - it is not a generic type
         - we don't implicit define that a custom type implement an interface 
+#### Go Routine
+- Why and How?
+        - Example: We have a list of links that for each link we will call to check status then log the result
+    - without Routine: we will have to wait for each link to finish processing then will work on the next link
+    - with Routine: main-Go-Routine will execute our code line by line. When it found the keyword `go` *in front of a function call* => it will create child-Go-Routine to run that line wihtin the same blocking from main-Go-Routine. Then main-Go-Routine will continue to process other line next.
+- Theory of Go Routine
+    - Go scheduler (working with 1 CPU core by default) = it will run 1 Go-Routine at a time until it finishes/ making blocking call. Then it will working on the next Go-Routine.
+    - Override setting to have Go scheduler working with multiple cpu core. (eg: 3 cpu cores) => we will truly have multiple Go-Routine execute at the same time
+- Concurrency is not parallelism
+    - concurrency = we can have multiple thread executing code. If one thread blocks, another one is picked up and worked on. (with Go -> it's like we schedule works and change between them on the fly)
+    - parallelism = multiple threads executed at the exact same time -> require multiple CPU cores
 ### :sunflower: Useful Links
 - https://play.golang.org/ (Go online playground)
