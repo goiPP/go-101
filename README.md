@@ -261,5 +261,14 @@ Go is not a OO language, it is static typing, pass by value
 - Concurrency is not parallelism
     - concurrency = we can have multiple thread executing code. If one thread blocks, another one is picked up and worked on. (with Go -> it's like we schedule works and change between them on the fly)
     - parallelism = multiple threads executed at the exact same time -> require multiple CPU cores
+
+#### Go Channel
+- While we have a main-routine (that controll program exit) and serveral child-routines. so main-routine can exit the program wihtout knowing that child-routine has finished or not.
+- `Channels` are used to communicate between different running routines. to ensure that app will not exit before all routines are done.
+    - channel have a type. -> channel of type string means between routines can share only a string type
+- Syntax:
+    - `channel < 5` = send value 5 into this channel
+    - `myNumber <- channel` = wait for a value to be sent into this channel. when we get one, assign the value to 'myNumber'
+    - `fmt.PrintLn(<-channel)`= wait for a value to be sent into this channel. when we get one, we log it out. This is a blocking call, so that the main-Go-Routine will wait until something happen then exit
 ### :sunflower: Useful Links
 - https://play.golang.org/ (Go online playground)
