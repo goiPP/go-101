@@ -270,5 +270,12 @@ Go is not a OO language, it is static typing, pass by value
     - `channel < 5` = send value 5 into this channel
     - `myNumber <- channel` = wait for a value to be sent into this channel. when we get one, assign the value to 'myNumber'
     - `fmt.PrintLn(<-channel)`= wait for a value to be sent into this channel. when we get one, we log it out. This is a blocking call, so that the main-Go-Routine will wait until something happen then exit
+
+#### Function Literal
+- is an Anonymous/Lamda Function
+
+        func() {
+          // some lines of logic in here
+                }()   <- need to put this extra () to invoke this literal function
 ### :sunflower: Useful Links
 - https://play.golang.org/ (Go online playground)
