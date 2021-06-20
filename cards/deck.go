@@ -53,13 +53,21 @@ func newDeckFromFile(fileName string) deck {
 	return deck(stringSlice)
 }
 
-func (d deck) shuffle() {
+func (d deck) shuffleOutdated() {
 	// this buit-in randomizer (rand.Intn) is depend on seed that Go will always have the same seed value everytime we run go file
 	// so we have to create new randomizer with our unique (everytime we run go file) seed
 	seed := rand.NewSource(time.Now().UnixNano()) // we will create new seed from a time at moment in int form
 	r := rand.New(seed)
 	for i := range d {
 		newIndex := r.Intn(len(d) - 1)
+		d[i], d[newIndex] = d[newIndex], d[i]
+	}
+}
+
+func (d deck) shuffle() {
+	rand.Seed(time.Now().UnixNano())
+	for i := range d {
+		newIndex := rand.Intn(len(d) - 1)
 		d[i], d[newIndex] = d[newIndex], d[i]
 	}
 }
