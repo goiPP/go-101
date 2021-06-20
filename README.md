@@ -185,5 +185,8 @@ Go is not a OO language, it is static typing, pass by value
     - Keys don't support indexing
     - need to know all the fields at compile time
     - Value Type
+
+#### Interface
+- problem: We have englishBot and spanishBot that both have `func (englishBot/spanishBot type) printGreeting()` to print hello/hola. In this case we would have 2 identical logic in duplicate functions because having different type of receiver which is :(
 ### :sunflower: Useful Links
 - https://play.golang.org/ (Go online playground)
