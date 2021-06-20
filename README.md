@@ -187,6 +187,68 @@ Go is not a OO language, it is static typing, pass by value
     - Value Type
 
 #### Interface
-- problem: We have englishBot and spanishBot that both have `func (englishBot/spanishBot type) printGreeting()` to print hello/hola. In this case we would have 2 identical logic in duplicate functions because having different type of receiver which is :(
+- Why interface:
+    - problem: We have englishBot and spanishBot that both have `func (englishBot/spanishBot type) printGreeting()` to print hello/hola. In this case we would have 2 identical logic in duplicate functions because having different type of argument which is :(
+            
+            type englishBot struct{}
+            type spanishBot struct{}
+
+            func main() {
+             eb := englishBot{}
+	         sb := spanishBot{}
+             
+             printGreeting(eb)
+             printGreeting(sb)
+            
+            }
+             
+             func printGreeting(eb englishBot) {
+                fmt.Println(eb.getGreeting())
+            }
+
+            func printGreeting(sb spanishBot) {
+                fmt.Println(sb.getGreeting())
+            }
+
+            func (englishBot) getGreeting() string {
+                return "Hi"
+            }
+
+            func (spanishBot) getGreeting() string {
+                return "Hola"
+            }
+    - Solved with interface. We declare an interface type that have functions that can be grouped. Any other type in the program that have define all same the functions in interface will autometically promote to be honorly member of that interface
+
+            type bot interface {
+                getGreeting()
+            }
+            type englishBot struct{}
+            type spanishBot struct{}
+
+            func main() {
+             eb := englishBot{}
+	         sb := spanishBot{}
+             
+             printGreeting(eb)
+             printGreeting(sb)
+            
+            }
+             
+             func printGreeting(b bot) {
+                fmt.Println(b.getGreeting())
+            }
+
+            func (englishBot) getGreeting() string {
+                return "Hi"
+            }
+
+            func (spanishBot) getGreeting() string {
+                return "Hola"
+            }
+- Type
+    - Concrete Type = we can actually create a value out of it directly eg: map, int, englishBot
+    - Interface type = we cannot create a value out of it directly eg: bot
+        - it is not a generic type
+        - we don't implicit define that a custom type implement an interface 
 ### :sunflower: Useful Links
 - https://play.golang.org/ (Go online playground)
